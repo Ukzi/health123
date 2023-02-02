@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+.container {  display: grid;
+  grid-template-columns: 1.5fr 0.1fr 1.5fr 0.1fr 1.5fr;
+  grid-template-rows: 1.5fr 0.1fr 1fr 0.2fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "title title title title title"
+    "line line line line line"
+    "img1 . img2 . img3"
+    "explain1 . explain2 . explain3";
+}
+
+.title { 
+grid-area: title;
+width: 100%;
+height: 300px;
+ }
+
+.img1 { 
+grid-area: img1;
+object-fit: fill;
+ }
+
+.img2 { 
+grid-area: img2;
+
+ }
+
+.img3 { 
+grid-area: img3;
+
+ }
+
+.line { 
+grid-area: line;
+width: 100%;
+height: 10px;
+background-color: black;
+
+ }
+
+.explain1 { grid-area: explain1; }
+
+.explain2 { grid-area: explain2; }
+
+.explain3 { grid-area: explain3; }
+
+</style>
+</th:block>
+</head>
+<body>
+<div layout:fragment="content">
+	<div class="container">
+	  <div class="title"><img src="/images/Customized exercise program.png" width="100%"></div>
+	  <div class="img1"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="img2"><img src="/images/training2.jpg" width="100%"></div>
+	  <div class="img3"><img src="/images/training3.jpg" width="100%"></div>
+	  <div class="line"></div>
+	  <div class="explain1">설명 1</div>
+	  <div class="explain2">설명 2</div> 
+	  <div class="explain3">설명 3</div>
+	</div>
+</div>
+</body>
+</html>
