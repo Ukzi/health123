@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+		.container {  display: grid;
+  grid-template-columns: 2.5fr 0.2fr 1.8fr 0.2fr 1.8fr 1fr;
+  grid-template-rows: 0.2fr 0.2fr 0.2fr 1fr 0.7fr 0.9fr 0.5fr 2.4fr 0.3fr 3.9fr 0.7fr 2.1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . . . ."
+    "page-recommend page-recommend . . . ."
+    ". . . . . ."
+    "photo-program . name-program . price-program ."
+    "photo-program . line line line ."
+    "photo-program . orderprice-program . btn-order ."
+    "line2 line2 line2 line2 line2 line2"
+    "photo2-program . explain2 . notting ."
+    "line3 line3 line3 line3 line3 line3"
+    "photo4-program . explain4 . photo3-program photo3-program"
+    "photo4-program . explain4 . . ."
+    "photo4-program . explain4 . explain3 explain3";
+}
+
+.page-recommend { 
+grid-area: page-recommend;
+width: 100%;
+height: 100px;
+}
+
+.photo-program { grid-area: photo-program; }
+
+.name-program { grid-area: name-program; }
+
+.price-program { grid-area: price-program; }
+
+.line { 
+grid-area: line;
+width: 100%;
+height: 10px;
+background-color: black;
+ }
+
+.orderprice-program { grid-area: orderprice-program; }
+
+.btn-order { grid-area: btn-order; }
+
+.line2 { 
+grid-area: line2;
+width: 100%;
+height: 10px;
+background-color: black;
+ }
+
+.photo2-program { grid-area: photo2-program; }
+
+.line3 { 
+grid-area: line3;
+width: 100%;
+height: 10px;
+background-color: black;
+ }
+
+.notting { grid-area: notting; }
+
+.photo3-program { grid-area: photo3-program; }
+
+.explain3 { grid-area: explain3; }
+
+.explain2 { grid-area: explain2; }
+
+.photo4-program { grid-area: photo4-program; }
+
+.explain4 { grid-area: explain4; }
+
+.order-btn {
+width: 100%; 	
+height: 40px;
+background-color: #e2e3e4;
+border-color: #e2e3e4;
+border-radius: 10px;
+}		
+	</style>
+</th:block>
+</head>
+<body>
+<div layout:fragment="content">
+	<div class="container">
+	  <div class="page-recommend my-auto"><h1>운동 프로그램</h1></div>
+	  <div class="photo-program"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="name-program"><h2>근력 강화 프로그램</h2></div>
+	  <div class="price-program"><h2>가격: 100,000</h2></div>
+	  <div class="line"></div>
+	  <div class="orderprice-program"><h2>주문 가격: 100,000</h2></div>
+	  <div class="btn-order"><button class="order-btn">구매하기</button> </div>
+	  <div class="line2"></div>
+	  <div class="photo2-program"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="line3"></div>
+	  <div class="notting"></div>
+	  <div class="photo3-program"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="explain3">체중 감량을 위한 운동 시 주의할 것은 유산소와 무산소 운동을 모두 병행해야 한다는 것이다. 걷기, 달리기, 자전거 타기, 줄넘기, 수영, 에어로빅 등의 유산소운동은 지방을 태우고 심장과 폐의 기능을 개선시키는 효과가 있다</div>
+	  <div class="explain2">체중 감량을 위한 운동 시 주의할 것은 유산소와 무산소 운동을 모두 병행해야 한다는 것이다. 걷기, 달리기, 자전거 타기, 줄넘기, 수영, 에어로빅 등의 유산소운동은 지방을 태우고 심장과 폐의 기능을 개선시키는 효과가 있다</div>
+	  <div class="photo4-program"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="explain4">체중 감량을 위한 운동 시 주의할 것은 유산소와 무산소 운동을 모두 병행해야 한다는 것이다. 걷기, 달리기, 자전거 타기, 줄넘기, 수영, 에어로빅 등의 유산소운동은 지방을 태우고 심장과 폐의 기능을 개선시키는 효과가 있다</div>
+	</div>
+</div>
+</body>
+</html>

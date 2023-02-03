@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+	.container {  display: grid;
+  grid-template-columns: 0.2fr 2.6fr 0.1fr 2.6fr 0.2fr 2.6fr 0.2fr;
+  grid-template-rows: 0.3fr 0.5fr 0.2fr 3.1fr 0.2fr 0.5fr 0.9fr 0.2fr 3.1fr 0.2fr 0.4fr 1.1fr 0.2fr 3.8fr 0.2fr 0.6fr 0.7fr 2.5fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . . . . ."
+    ". introduction introduction introduction . . ."
+    ". . . . . . ."
+    ". pic1 . pic2 . pic3 ."
+    ". . . . . . ."
+    ". pic1-a . pic2-a . pic3-a ."
+    ". pic1-b . pic2-b . pic3-b ."
+    ". . . . . . ."
+    ". pic4 . pic5 . pic6 ."
+    ". . . . . . ."
+    ". pic4-a . pic5-a . pic6-a ."
+    ". pic4-b . pic5-b . pic6-b ."
+    ". . . . . . ."
+    ". pic7 . pic8 . pic9 ."
+    ". . . . . . ."
+    ". pic7-a . pic8-a . pic9-a ."
+    ". pic7-b . pic8-b . pic9-b ."
+    ". . . . . . .";
+}
+
+.introduction { grid-area: introduction; }
+
+.pic1 { grid-area: pic1; }
+
+.pic2 { grid-area: pic2; }
+
+.pic3 { grid-area: pic3; }
+
+.pic1-a { grid-area: pic1-a; }
+
+.pic2-a { grid-area: pic2-a; }
+
+.pic3-a { grid-area: pic3-a; }
+
+.pic1-b { grid-area: pic1-b; }
+
+.pic2-b { grid-area: pic2-b; }
+
+.pic3-b { grid-area: pic3-b; }
+
+.pic4 { grid-area: pic4; }
+
+.pic5 { grid-area: pic5; }
+
+.pic6 { grid-area: pic6; }
+
+.pic4-a { grid-area: pic4-a; }
+
+.pic5-a { grid-area: pic5-a; }
+
+.pic6-a { grid-area: pic6-a; }
+
+.pic4-b { grid-area: pic4-b; }
+
+.pic5-b { grid-area: pic5-b; }
+
+.pic6-b { grid-area: pic6-b; }
+
+.pic7 { grid-area: pic7; }
+
+.pic8 { grid-area: pic8; }
+
+.pic9 { grid-area: pic9; }
+
+.pic7-a { grid-area: pic7-a; }
+
+.pic8-a { grid-area: pic8-a; }
+
+.pic9-a { grid-area: pic9-a; }
+
+.pic7-b { grid-area: pic7-b; }
+
+.pic8-b { grid-area: pic8-b; }
+
+.pic9-b { grid-area: pic9-b; }
+	
+	</style>
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+		  <div class="introduction"><h1>프로그램 소개</h1></div>
+		  <div class="pic1"><img src="/images/training3.jpg" width="100%"></div>
+		  <div class="pic2"><img src="/images/training3.jpg" width="100%"></div>
+		  <div class="pic3"><img src="/images/training3.jpg" width="100%"></div>
+		  <div class="pic1-a">추천</div>
+		  <div class="pic2-a">추천</div>
+		  <div class="pic3-a">추천</div>
+		  <div class="pic1-b">다이어트에 좋아</div>
+		  <div class="pic2-b">건강 증진 쵝오</div>
+		  <div class="pic3-b">몸짱이 될거야 난</div>
+		  <div class="pic4"><img src="/images/training2.jpg" width="100%"></div>
+		  <div class="pic5"><img src="/images/training2.jpg" width="100%"></div>
+		  <div class="pic6"><img src="/images/training2.jpg" width="100%"></div>
+		  <div class="pic4-a">best</div>
+		  <div class="pic5-a">best</div>
+		  <div class="pic6-a">best</div>
+		  <div class="pic4-b">다이어트 할거지?</div>
+		  <div class="pic5-b">건강한게 좋은것이야</div>
+		  <div class="pic6-b">3대 500이하? ㅋ</div>
+		  <div class="pic7"><img src="/images/training1.jpg" width="100%"></div>
+		  <div class="pic8"><img src="/images/training1.jpg" width="100%"></div>
+		  <div class="pic9"><img src="/images/training1.jpg" width="100%"></div>
+		  <div class="pic7-a">기본</div>
+		  <div class="pic8-a">기본</div>
+		  <div class="pic9-a">기본</div>
+		  <div class="pic7-b">다이어트</div>
+		  <div class="pic8-b">건강목적</div>
+		  <div class="pic9-b">근성장</div>
+		</div>
+	</div>
+</body>
+</html>
+

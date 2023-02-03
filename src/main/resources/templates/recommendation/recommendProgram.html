@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block layout:fragment="css">
+	<style>
+	.container {  display: grid;
+  grid-template-columns: 0.2fr 2.3fr 0.1fr 2.4fr 2.1fr 0.2fr;
+  grid-template-rows: 0.2fr 1fr 0.2fr 3fr 0.3fr 3fr 0.3fr 3fr 0.3fr 0.8fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . . . ."
+    ". recommendation recommendation . . ."
+    ". . . . . ."
+    ". recom-pic1 . explain-pic1 other-pic1 ."
+    ". . . . . ."
+    ". recom-pic2 . explain-pic2 other-pic2 ."
+    ". . . . . ."
+    ". recom-pic3 . explain-pic3 other-pic3 ."
+    ". . . . . ."
+    ". . . . . .";
+}
+
+.recom-pic1 { grid-area: recom-pic1; }
+
+.recom-pic2 { grid-area: recom-pic2; }
+
+.recom-pic3 { grid-area: recom-pic3; }
+
+.explain-pic1 { grid-area: explain-pic1; }
+
+.explain-pic2 { grid-area: explain-pic2; }
+
+.explain-pic3 { grid-area: explain-pic3; }
+
+.other-pic1 { grid-area: other-pic1; }
+
+.other-pic2 { grid-area: other-pic2; }
+
+.other-pic3 { grid-area: other-pic3; }
+
+.recommendation { grid-area: recommendation;
+width: 100%;
+height: 100px;
+ }
+	
+</style>
+</th:block>
+</head>
+<body>
+<div layout:fragment="content">
+	<div class="container">
+	  <div class="recommendation"><h1>운동 프로그램</h1></div>
+	  <div class="recom-pic1"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="recom-pic2"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="recom-pic3"><img src="/images/training1.jpg" width="100%"></div>
+	  <div class="explain-pic1">프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 </div>
+	  <div class="explain-pic2">프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 </div>
+	  <div class="explain-pic3">프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 프로그램 추천 설명 </div>
+	  <div class="other-pic1">
+	  	<ul>
+	  		<li>추천이유 1</li>
+	  		<li>추천이유 2</li>
+	  		<li>추천이유 3</li>
+	  		<li>추천이유 4</li>
+	  	</ul>
+	  </div>
+	  <div class="other-pic2">
+	  	<ul>
+	  		<li>추천이유 1</li>
+	  		<li>추천이유 2</li>
+	  		<li>추천이유 3</li>
+	  		<li>추천이유 4</li>
+	  	</ul>
+	  </div>
+	  <div class="other-pic3">
+	  	<ul>
+	  		<li>추천이유 1</li>
+	  		<li>추천이유 2</li>
+	  		<li>추천이유 3</li>
+	  		<li>추천이유 4</li>
+	  	</ul>
+	  </div>
+	  
+	</div>
+</div>
+</body>
+</html>

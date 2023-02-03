@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+.container {  display: grid;
+  grid-template-columns: 0.6fr 1.2fr 0.1fr 2.1fr 1fr;
+  grid-template-rows: 1fr 1fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 0.3fr 1fr 0.5fr 1fr 1.5fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . . ."
+    ". name . name-input ."
+    ". . . . ."
+    ". age . age-input ."
+    ". . . . ."
+    ". tall . tall-input ."
+    ". . . . ."
+    ". weight . weight-input ."
+    ". . . . ."
+    ". exercise-amount . exercise-amount-select ."
+    ". . . . ."
+    ". exercise-purpose . exercise-purpose-select ."
+    ". . . . ."
+    ". email . email-input ."
+    ". . . . ."
+    ". password . password-input ."
+    ". . . . ."
+    ". join-membership join-membership join-membership ."
+    ". . . . .";
+}
+
+.memberForm {
+ font-size: large;
+ font-weight: bold;
+}
+
+.name { grid-area: name; }
+
+.age { grid-area: age; }
+
+.name-input { grid-area: name-input; }
+
+.age-input { grid-area: age-input; }
+
+.tall { grid-area: tall; }
+
+.tall-input { grid-area: tall-input; }
+
+.weight { grid-area: weight; }
+
+.weight-input { grid-area: weight-input; }
+
+.exercise-amount { grid-area: exercise-amount; }
+
+.exercise-amount-select { grid-area: exercise-amount-select; }
+
+.exercise-purpose { grid-area: exercise-purpose; }
+
+.exercise-purpose-select { grid-area: exercise-purpose-select; }
+
+.email { grid-area: email; }
+
+.email-input { grid-area: email-input; }
+
+.password { grid-area: password; }
+
+.password-input { grid-area: password-input; }
+
+.join-membership { 
+grid-area: join-membership;
+width: 100%;
+ }
+ .member-btn {
+width: 100%; 	
+height: 40px;
+background-color: #e2e3e4;
+border-color: #e2e3e4;
+border-radius: 10px;
+ }
+
+</style>
+</th:block>
+</head>
+<body>
+<div layout:fragment="content">
+	<div class="container memberForm">
+	  <div class="name">이름</div>
+	  <div class="age">나이</div>
+	  <div class="name-input"><input placeholder="이름을 입력해주세요" /></div>
+	  <div class="age-input"><input  placeholder="나이를 입력해주세요"/></div>
+	  <div class="tall">키</div>
+	  <div class="tall-input"><input  placeholder="키를 입력해주세요"/></div>
+	  <div class="weight">몸무게</div>
+	  <div class="weight-input"><input  placeholder="몸무게를 입력해주세요"/></div>
+	  <div class="exercise-amount">운동량</div>
+	  <div class="exercise-amount-select">
+		<select class="form-select" aria-label="Default select example">
+		  <option selected>평소 운동량</option>
+		  <option value="exercise1">운동부족(0~30분:주 0~1회)</option>
+		  <option value="exercise2">운동보통(30분~1시간:주 2~3회)</option>
+		  <option value="exercise3">운동충분(1시간~ : 주 3~5회)</option>
+		</select>
+	  </div>
+	  <div class="exercise-purpose">운동목적</div>
+	  <div class="exercise-purpose-select">
+	  	<select class="form-select" aria-label="Default select example">
+		  <option selected>운동 목적</option>
+		  <option value="exercise1">다이어트</option>
+		  <option value="exercise2">건강</option>
+		  <option value="exercise3">근육증가</option>
+		</select>
+	  </div>
+	  <div class="email">이메일</div>
+	  <div class="email-input"><input  placeholder="이메일을 입력해주세요"/></div>
+	  <div class="password">비밀번호</div>
+	  <div class="password-input"><input  placeholder="비밀번호를 입력해주세요"/></div>
+	  <div class="join-membership"><button class="member-btn"><h3>회원가입</h3></button></div>
+	</div>
+</div>
+</body>
+</html>
