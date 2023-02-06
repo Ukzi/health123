@@ -10,9 +10,11 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class ProgramController {
-	@GetMapping(value = "/programPage")
+	@GetMapping(value = "/programPage1")
 	public String order() {
 		
-		return "/program/programPage";
+		return "/program/programPage1";
 	}
+	
+	
 }

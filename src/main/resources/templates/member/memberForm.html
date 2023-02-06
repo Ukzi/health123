@@ -75,7 +75,8 @@
 
 .join-membership { 
 grid-area: join-membership;
-width: 100%;
+width: 400px;
+text-align: center;
  }
  .member-btn {
 width: 100%; 	
@@ -84,22 +85,42 @@ background-color: #e2e3e4;
 border-color: #e2e3e4;
 border-radius: 10px;
  }
+ 
+ input {
+ width: 220px;
+ }
 
+ .form-select {
+ width: 220px;
+ }
+ 
+ .div {
+  text-align: center;
+ }
+ 
+/*  div {
+ text-align: center;
+ }
+ 
+ div select {
+ text-align: center;
+ } */
+ 
 </style>
 </th:block>
 </head>
 <body>
 <div layout:fragment="content">
 	<div class="container memberForm">
-	  <div class="name">이름</div>
-	  <div class="age">나이</div>
+	  <div class="name div">이름</div>
+	  <div class="age div">나이</div>
 	  <div class="name-input"><input placeholder="이름을 입력해주세요" /></div>
 	  <div class="age-input"><input  placeholder="나이를 입력해주세요"/></div>
-	  <div class="tall">키</div>
+	  <div class="tall div">키</div>
 	  <div class="tall-input"><input  placeholder="키를 입력해주세요"/></div>
-	  <div class="weight">몸무게</div>
+	  <div class="weight div">몸무게</div>
 	  <div class="weight-input"><input  placeholder="몸무게를 입력해주세요"/></div>
-	  <div class="exercise-amount">운동량</div>
+	  <div class="exercise-amount div">운동량</div>
 	  <div class="exercise-amount-select">
 		<select class="form-select" aria-label="Default select example">
 		  <option selected>평소 운동량</option>
@@ -108,7 +129,7 @@ border-radius: 10px;
 		  <option value="exercise3">운동충분(1시간~ : 주 3~5회)</option>
 		</select>
 	  </div>
-	  <div class="exercise-purpose">운동목적</div>
+	  <div class="exercise-purpose div">운동목적</div>
 	  <div class="exercise-purpose-select">
 	  	<select class="form-select" aria-label="Default select example">
 		  <option selected>운동 목적</option>
@@ -117,9 +138,9 @@ border-radius: 10px;
 		  <option value="exercise3">근육증가</option>
 		</select>
 	  </div>
-	  <div class="email">이메일</div>
+	  <div class="email div">이메일</div>
 	  <div class="email-input"><input  placeholder="이메일을 입력해주세요"/></div>
-	  <div class="password">비밀번호</div>
+	  <div class="password div">비밀번호</div>
 	  <div class="password-input"><input  placeholder="비밀번호를 입력해주세요"/></div>
 	  <div class="join-membership"><button class="member-btn"><h3>회원가입</h3></button></div>
 	</div>

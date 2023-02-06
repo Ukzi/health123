@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+	<style>
+	.container {  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1.3fr 1.3fr 0.4fr 1fr 1.5fr 0.9fr 0.4fr 1.9fr 0.9fr 1.1fr 0.7fr 1.3fr 0.6fr 1fr 1.3fr 1.7fr 0.4fr;
+  grid-template-rows: 0.2fr 0.8fr 1.1fr 0.2fr 2.7fr 0.9fr 0.4fr 1fr 0.4fr 0.5fr 0.6fr 0.8fr 3.7fr 0.5fr 1.1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . . . . . . . . . . . . . . . . ."
+    "program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img . . . . . . ."
+    "program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img . program-title program-title program-title program-title program-title ."
+    "program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img . . . . . . ."
+    "program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img . title-ex title-ex title-ex title-ex title-ex ."
+    "program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img program-img . . . . . . ."
+    ". . . . . . . . . . . . . . . . . . ."
+    ". sub1 sub1 . sub2 sub2 sub2 . . sub3 sub3 . sub4 sub4 sub4 . sub5 sub5 ."
+    ". . . . . . . . . . . . . . . . . . ."
+    ". . . . . progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2"
+    ". progrma-title2 progrma-title2 progrma-title2 . progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2"
+    ". . . . . progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2"
+    ". title-ex2 title-ex2 title-ex2 . progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2"
+    ". . . . . progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2 progrma-img2"
+    ". . . . . . . . . . . . . . . . . . .";
+}
+
+.program-img { grid-area: program-img; }
+
+.sub1 { grid-area: sub1; }
+
+.sub3 { grid-area: sub3; }
+
+.sub5 { grid-area: sub5; }
+
+.program-title { grid-area: program-title; }
+
+.title-ex { grid-area: title-ex; }
+
+.progrma-title2 { grid-area: progrma-title2; }
+
+.title-ex2 { grid-area: title-ex2; }
+
+.progrma-img2 { grid-area: progrma-img2; }
+
+.sub2 { grid-area: sub2; }
+
+.sub4 { grid-area: sub4; }
+	
+	</style>
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+		  <div class="program-img"><img src="/images/training3.jpg" width="100%" class="rounded float-start"></div>
+		  <div class="program-title"><h2>큰설명들어가</h2></div>
+		  <div class="title-ex">
+		  		<ul>
+				  <li>자그마한 설명 들어가</li>
+				  <li>자그마한 설명 들어가</li>
+				  <li>자그마한 설명 들어가</li>
+				  <li>자그마한 설명 들어가</li>
+				</ul>
+		  </div>
+		  <div class="sub1"><h2>운동조아</h2></div>
+		  <div class="sub2"><h2>운동조아</h2></div>
+		  <div class="sub3"><h2>운동조아</h2></div>
+		  <div class="sub4"><h2>운동조아</h2></div>
+		  <div class="sub5"><h2>운동조아</h2></div>
+		  <div class="program-title2"><h2>큰설명들어가</h2></div>
+		  <div class="title-ex2">
+		    	<ul>
+				  <li>자그마한 설명 들어가</li>
+				  <li>자그마한 설명 들어가</li>
+				  <li>자그마한 설명 들어가</li>
+				  <li>자그마한 설명 들어가</li>
+				</ul>
+		  </div>
+		  <div class="program-img2"><img src="/images/training3.jpg" width="100%" class="rounded float-start"></div>
+		</div>
+	</div>
+</body>
+</html>
