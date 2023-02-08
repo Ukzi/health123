@@ -1,5 +1,5 @@
 package com.health.constant;
 
 public enum ExerciseAmount {
-	LESS, NORMAL, HIGH
+	LESS, NORMAL, MUCH
 }
