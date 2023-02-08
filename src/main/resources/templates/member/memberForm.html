@@ -5,6 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	    //회원가입이 실패했을때
+		$(document).ready(function(){
+        	var errorMessage = [[${errorMessage}]];
+        	if(errorMessage != null){
+            	alert(errorMessage);
+        	}
+    	});
+	</script>
+</th:block>
+
 <!-- 사용자 CSS 추가 -->
 <th:block layout:fragment="css">
 	<style>
@@ -112,38 +126,68 @@ border-radius: 10px;
 <body>
 <div layout:fragment="content">
 	<div class="container memberForm">
-	  <div class="name div">이름</div>
-	  <div class="age div">나이</div>
-	  <div class="name-input"><input placeholder="이름을 입력해주세요" /></div>
-	  <div class="age-input"><input  placeholder="나이를 입력해주세요"/></div>
-	  <div class="tall div">키</div>
-	  <div class="tall-input"><input  placeholder="키를 입력해주세요"/></div>
-	  <div class="weight div">몸무게</div>
-	  <div class="weight-input"><input  placeholder="몸무게를 입력해주세요"/></div>
-	  <div class="exercise-amount div">운동량</div>
-	  <div class="exercise-amount-select">
-		<select class="form-select" aria-label="Default select example">
-		  <option selected>평소 운동량</option>
-		  <option value="exercise1">운동부족(0~30분:주 0~1회)</option>
-		  <option value="exercise2">운동보통(30분~1시간:주 2~3회)</option>
-		  <option value="exercise3">운동충분(1시간~ : 주 3~5회)</option>
-		</select>
-	  </div>
-	  <div class="exercise-purpose div">운동목적</div>
-	  <div class="exercise-purpose-select">
-	  	<select class="form-select" aria-label="Default select example">
-		  <option selected>운동 목적</option>
-		  <option value="exercise1">다이어트</option>
-		  <option value="exercise2">건강</option>
-		  <option value="exercise3">근육증가</option>
-		</select>
-	  </div>
-	  <div class="email div">이메일</div>
-	  <div class="email-input"><input  placeholder="이메일을 입력해주세요"/></div>
-	  <div class="password div">비밀번호</div>
-	  <div class="password-input"><input  placeholder="비밀번호를 입력해주세요"/></div>
-	  <div class="join-membership"><button class="member-btn"><h3>회원가입</h3></button></div>
-	</div>
+		<form class="row g-3" role="form" action="/members/new" method="post" th:object="${memberFormDto}">
+
+			  <div class="name-input">
+				  <label th:for="name">이름</label> 
+					<input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력해주세요">
+					<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect Data</p>
+			  </div>
+			  
+			  <div class="age-input">
+				  	<label th:for="age">나이</label> 
+					<input type="text" th:field="*{age}" class="form-control" placeholder="나이를 입력해주세요">
+					<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fieldError">Incorrect Data</p>
+			  </div>
+			  
+			  <div class="tall div">키</div>
+			  
+			  <div class="tall-input">
+				  	<label th:for="tall">키</label> 
+					<input type="text" th:field="*{tall}" class="form-control" placeholder="키를 입력해주세요">
+					<p th:if="${#fields.hasErrors('tall')}" th:errors="*{tall}" class="fieldError">Incorrect Data</p>
+			  </div>
+			  <div class="weight div">몸무게</div>
+				  	<label th:for="weight">몸무게</label> 
+						<input type="text" th:field="*{weight}" class="form-control" placeholder="몸무게를 입력해주세요">
+						<p th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" class="fieldError">Incorrect Data</p>
+			  <div class="weight-input">
+			  	
+			  </div>
+			  <div class="exercise-amount div">운동량</div>
+			  
+			  <div class="exercise-amount-select">
+				<select th:field="*{exerciseAmount}" class="form-select" aria-label="Default select example">
+				  <option value="LESS">운동부족(0~30분:주 0~1회)</option>
+				  <option value="NORMAL">운동보통(30분~1시간:주 2~3회)</option>
+				  <option value="HIGH">운동충분(1시간~ : 주 3~5회)</option>
+				</select>
+			  </div>
+			  
+			  <div class="exercise-purpose div">운동목적</div>
+			  
+			  <div class="exercise-purpose-select">
+			  	<!-- <select class="form-select" aria-label="Default select example"> -->
+			  <select th:field="*{exercisePurpose}" class="form-select" aria-label="Default select example">
+				  <option value="DIET">다이어트</option>
+				  <option value="HEALTHY">건강</option>
+				  <option value="MUSCLE">근육증가</option>
+				</select>
+			  </div>
+			  <div class="email div">이메일</div>
+			  <div class="email-input">
+				  <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
+					<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect Data</p>
+			  </div>
+			  <div class="password div">비밀번호</div>
+			  <div class="password-input">
+				 <input type="password" th:field="*{password}" class="form-control" placeholder="비밀번호를 입력">
+					<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect Data</p>
+			  </div>
+			  <div class="join-membership"><button type="submit" class="member-btn"><h3>회원가입</h3></button></div>
+			  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+			</form>
+			</div>
 </div>
 </body>
 </html>
