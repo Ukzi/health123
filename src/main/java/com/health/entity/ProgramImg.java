@@ -23,7 +23,7 @@ public class ProgramImg extends BaseEntity {
 	@Id
 	@Column(name="program_img_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long prgramId;
+	private Long id;
 	
 	private String imgName; //이미지 파일명
 	

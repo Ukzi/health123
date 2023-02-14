@@ -28,7 +28,7 @@ public class Program extends BaseEntity {
 	@Id
 	@Column(name="program_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long programId; //상품코드
+	private Long id; //상품코드
 	
 	@Column(nullable = false, length = 50)
 	private String programNm; //상품명
@@ -43,11 +43,19 @@ public class Program extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private ProgramSellStatus programSellStatus; //상품 판매상태
 	
+	@Column(nullable = false)
+	private int stockNumber; //재고수량
+	
 	public void updateProgram(ProgramFormDto programFormDto) {
 		this.programNm = programFormDto.getProgramNm();
 		this.price = programFormDto.getPrice();
 		this.programDetail = programFormDto.getProgramDetail();
 		this.programSellStatus = programFormDto.getProgramSellStatus();
+	}
+	
+	//상품의 재고 증가
+	public void addStock(int stockNumber) {
+		this.stockNumber += stockNumber;
 	}
 	
 }

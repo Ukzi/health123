@@ -13,8 +13,12 @@ import org.thymeleaf.util.StringUtils;
 import com.health.constant.ProgramSellStatus;
 import com.health.dto.MainProgramDto;
 import com.health.dto.ProgramSearchDto;
+import com.health.dto.QMainProgramDto;
 import com.health.entity.Program;
+import com.health.entity.QProgram;
+import com.health.entity.QProgramImg;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 public class ProgramRepositoryCustomImpl implements ProgramRepositoryCustom  {
@@ -35,19 +39,19 @@ public class ProgramRepositoryCustomImpl implements ProgramRepositoryCustom  {
 		else if(StringUtils.equals("1m", searchDateType)) dateTime = dateTime.minusMonths(1);
 		else if(StringUtils.equals("6m", searchDateType)) dateTime = dateTime.minusMonths(6);
 		
-		return QItem.item.regTime.after(dateTime); //이후의 시간
+		return QProgram.program.regTime.after(dateTime); //이후의 시간
 	}
 	
 	private BooleanExpression searchSellStatusEq(ProgramSellStatus searchSellStatus) {
-		return searchSellStatus == null ? null : QItem.program.programSellStatus.eq(searchSellStatus);
+		return searchSellStatus == null ? null : QProgram.program.programSellStatus.eq(searchSellStatus);
 	}
 	
 	
 	private BooleanExpression searchByLike(String searchBy, String searchQuery) {
 		if(StringUtils.equals("programNm", searchBy)) {
-			return QItem.program.programNm.like("%" + searchQuery + "%"); //itemNm LIKE %청바지%
+			return QProgram.program.programNm.like("%" + searchQuery + "%"); //itemNm LIKE %청바지%
 		} else if(StringUtils.equals("createdBy", searchBy)) {
-			return QItem.program.createdBy.like("%" + searchQuery + "%"); //createdBy LIKE %test.com%
+			return QProgram.program.createdBy.like("%" + searchQuery + "%"); //createdBy LIKE %test.com%
 		}
 		
 		return null;
@@ -55,20 +59,20 @@ public class ProgramRepositoryCustomImpl implements ProgramRepositoryCustom  {
 	
 	
 	@Override
-	public Page<Program> getAdminItemPage(ProgramSearchDto programSearchDto, Pageable pageable) {
+	public Page<Program> getAdminProgramPage(ProgramSearchDto programSearchDto, Pageable pageable) {
 		List<Program> content = queryFactory
-				.selectFrom(QItem.program) //select * from item
+				.selectFrom(QProgram.program) //select * from item
 				.where(regDtsAfter(programSearchDto.getSearchDateType()), // where reg_time = ?
 					   searchSellStatusEq(programSearchDto.getSearchSellStatus()), //and sell_status = ?
 					   searchByLike(programSearchDto.getSearchBy(), programSearchDto.getSearchQuery())) // and itemNm LIKE %검색어%
-				.orderBy(QItem.program.programId.desc())
+				.orderBy(QProgram.program.id.desc())
 				.offset(pageable.getOffset()) //데이터를 가져올 시작 index
 				.limit(pageable.getPageSize()) //한번에 가지고 올 최대 개수
 				.fetch();
 		
 		//https://querydsl.com/static/querydsl/4.1.0/apidocs/com/querydsl/core/types/dsl/Wildcard.html
 		// Wildcard.count = count(*)
-		long total = queryFactory.select(Wildcard.count).from(QItem.item)
+		long total = queryFactory.select(Wildcard.count).from(QProgram.program)
                 .where(regDtsAfter(programSearchDto.getSearchDateType()),
                         searchSellStatusEq(programSearchDto.getSearchSellStatus()),
                         searchByLike(programSearchDto.getSearchBy(), programSearchDto.getSearchQuery()))
@@ -79,18 +83,18 @@ public class ProgramRepositoryCustomImpl implements ProgramRepositoryCustom  {
 	}
 	
     private BooleanExpression programNmLike(String searchQuery){
-        return StringUtils.isEmpty(searchQuery) ? null : QItem.program.programNm.like("%" + searchQuery + "%");
+        return StringUtils.isEmpty(searchQuery) ? null : QProgram.program.programNm.like("%" + searchQuery + "%");
     }
     
     @Override
     public Page<MainProgramDto> getMainProgramPage(ProgramSearchDto programSearchDto, Pageable pageable) {
-        QItem program = QItem.program;
-        QItemImg programImg = QItemImg.programImg;
+    	QProgram program = QProgram.program;
+        QProgramImg programImg = QProgramImg.programImg;
 
         List<MainProgramDto> content = queryFactory
                 .select(
-                        new QMainItemDto(
-                        		program.programId,
+                        new QMainProgramDto(
+                        		program.id,
                         		program.programNm,
                         		program.programDetail,
                         		programImg.imgUrl,
@@ -100,7 +104,7 @@ public class ProgramRepositoryCustomImpl implements ProgramRepositoryCustom  {
                 .join(programImg.program, program)
                 .where(programImg.repimgYn.eq("Y"))
                 .where(programNmLike(programSearchDto.getSearchQuery()))
-                .orderBy(program.programId.desc())
+                .orderBy(program.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

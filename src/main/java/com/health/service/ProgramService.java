@@ -54,7 +54,7 @@ public class ProgramService {
 			programImgService.saveProgramImg(programImg, programImgFileList.get(i));
 		}
 		
-			return program.getProgramId();
+			return program.getId();
 	}
 	
 	//상품 가져오기
@@ -97,7 +97,7 @@ public class ProgramService {
 			programImgService.updateProgramImg(programImgIds.get(i), programImgFileList.get(i));
 		}
 		
-		return program.getProgramId();
+		return program.getId();
 		
 	}
 	
